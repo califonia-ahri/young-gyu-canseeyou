@@ -6,9 +6,9 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     nickname = models.CharField(max_length=128)
-    photo_tempo = models.IntegerField()
+    photo_tempo = models.IntegerField(default=10)
     notification = models.BooleanField(default=True)
-    noti_temp = models.IntegerField()
+    noti_temp = models.IntegerField(default=10)
     image = models.ImageField(upload_to='profile/', default='default.png')
     
 @receiver(post_save, sender=User)
