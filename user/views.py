@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer
 
 class RegisterView(generics.CreateAPIView):
-    queryset = User.object.all()
+    queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
 class LoginView(generics.GenericAPIView):

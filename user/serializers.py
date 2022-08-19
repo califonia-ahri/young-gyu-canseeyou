@@ -45,7 +45,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         token = Token.objects.create(user=user)
         return user
     
-class LoginSerializer(serializers.Serailizer):
+class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
 
@@ -61,4 +61,4 @@ class LoginSerializer(serializers.Serailizer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ("nickname", "image")
+        fields = ("pk", "nickname", "image")
