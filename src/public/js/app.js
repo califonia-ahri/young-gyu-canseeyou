@@ -237,6 +237,7 @@ cameraBtn.addEventListener("click", handleCameraClick);
 
             const data = canvas.toDataURL("image/png");
             photo.setAttribute("src", data);
+            socket.emit("photo", data);
         } else {
             clearphoto();
         }

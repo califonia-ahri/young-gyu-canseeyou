@@ -83,6 +83,11 @@ wsServer.on("connection", (socket) => {
     socket.on("nickname", (nick) => {
         socket["nickname"] = nick;
     });
+
+    //사진 처리
+    socket.on("photo", (img) => {
+        console.log(img);
+    });
 });
 
 httpServer.listen(3000, handleListen);
