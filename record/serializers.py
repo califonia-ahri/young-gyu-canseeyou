@@ -26,7 +26,7 @@ class PartySerializer(serializers.ModelSerializer):
 class PartyCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Party
-        fields = ( "start_time", "end_time")
+        fields = ("user", "start_time", "end_time")
 
 class PartyRepresentationSerializer(serializers.ModelSerializer):
     class Meta:

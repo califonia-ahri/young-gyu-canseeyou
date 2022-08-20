@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import datetime as dt
 
 from rest_framework import generics, mixins
 from rest_framework import viewsets
@@ -46,3 +47,17 @@ class DetailViewSet(viewsets.ModelViewSet):
     def update(self, serializer):
         end_focus = timezone.now()
         serializer.save(end_focus=end_focus)
+        
+def dayTime(request):
+    year = request.POST['year']
+    month = request.POST['month']
+    day = request.POST['day']
+    today = dt.datetime.strptime(f'{year}-{month}-{day}', "%Y-%m-%d")
+    
+    that_days = Party.objects.filter(start_time=today, user=request.user)
+    
+    
+def detailTime(request, pid):
+    details = Detail.objects.filter(pid=pid)
+    
+    

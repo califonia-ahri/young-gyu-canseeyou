@@ -15,3 +15,4 @@ class Detail(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='detail', null=True)
     start_focus = models.DateTimeField(auto_now_add=True)
     end_focus = models.DateTimeField(auto_now=True)
+    
