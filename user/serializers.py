@@ -61,4 +61,9 @@ class LoginSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ("pk", "nickname", "image")
+        fields = ("nickname", "image")
+        
+class SettingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("photo_tempo", "noti_tempo", "notification", "image")
