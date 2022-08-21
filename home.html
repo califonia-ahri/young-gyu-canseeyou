@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <title>Eye Can See You</title>
+    <link rel="stylesheet" href="style.css" media="(min-width: 768px)" />
+</head>
+
+<body>
+    <div id="layout">
+        <div id="navBar">
+            <img src="./Logo.png" id="logo" alt="Logo" width="3" height="50%" />
+            <div id="menu">
+                <a class="links">Meeting</a>
+                <a class="links">Statics</a>
+                <a class="links">Settings</a>
+            </div>
+            <input type="button" value="sign in" id="signIn" />
+        </div>
+        <div id="title">
+            <div id="heading">Eye Can See You</div>
+            <div id="subtitle">for everyone</div>
+        </div>
+        <div id="wrapper">
+            <div id="inner">
+                <div id="box1"></div>
+                <div id="box2">
+                    <!-- main part-->
+                    <main>
+                        <div id="myStream">
+                            <!--웹캠 송출-->
+                            <video id="myFace" autoplay playsinline muted width="400" height="400"></video
+                ><button id="mute">Mute</button
+                ><button id="camera">Camera Turn Off</button>
+              </div>
+              <!-- 방 입장하기-->
+              <div id="welcome">
+                <form>
+                  <input placeholder="room name" required type="text" /><button>
+                    Enter Room
+                  </button>
+                </form>
+                <h4>Open Rooms:</h4>
+                <ul></ul>
+              </div>
+              <div id="room">
+                <h3>Unknown</h3>
+                <ul></ul>
+                <form id="name">
+                  <input placeholder="nickname" required type="text" /><button>
+                    Save
+                  </button>
+                </form>
+                <form id="msg">
+                  <input placeholder="message" required type="text" /><button>
+                    Send
+                  </button>
+                </form>
+              </div>
+              <div class="contentarea">
+                <!-- 화상하면 캡처-->
+                <h1>
+                  MDN - navigator.mediaDevices.getUserMedia(): Still photo
+                  capture demo
+                </h1>
+                <p>
+                  This example demonstrates how to set up a media stream using
+                  your built-in webcam, fetch an image from that stream, and
+                  create a PNG using that image.
+                </p>
+                <div class="camera">
+                  <video id="video">Video stream not available.</video
+                  ><button id="startbutton">Take photo</button>
+                </div>
+                <canvas id="canvas"></canvas>
+                <div class="output">
+                  <img
+                    id="photo"
+                    alt="The screen capture will appear in this box."
+                  />
+                </div>
+                <p>Visit our article</p>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos"
+                >
+                  Taking still photos with WebRTC to learn more about the
+                  technologies used here.</a
+                >
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <div id="footerSections">
+        <div id="footerSection1">
+          <div class="sectionName">footer section 01</div>
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="explain">
+            Apparently we had reached a great height in the atmosphere, for the
+            sky was a dead black, and the stars had ceased to twinkle.
+          </div>
+        </div>
+
+        <div id="footerSection2">
+          <div class="sectionName">footer section 02</div>
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="explain">
+            By the same illusion which lifts the horizon of the sea to the level
+            of the spectator on a hillside, the sable cloud beneath was dished
+          </div>
+        </div>
+
+        <div id="footerSection3">
+          <div class="sectionName">footer section 03</div>
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="explain">
+            And the car seemed to float in the middle of an immense dark sphere,
+            whose upper half was strewn with silver.
+          </div>
+        </div>
+
+        <div id="footerSection4">
+          <div class="sectionName">footer section 04</div>
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="explain">
+            Looking down into the dark gulf below, I could see a ruddy light
+            streaming through a rift in the clouds.
+          </div>
+        </div>
+      </div>
+      <div id="bottomBar">
+        <div id="copyright">© Copyright</div>
+        <div id="facebook">ㅁ</div>
+        <div id="twitter">ㅁ</div>
+        <div id="instagram">ㅁ</div>
+      </div>
+    </div>
+    <audio
+      class="snap"
+      src="https://wesbos.com/demos/photobooth/snap.mp3"
+      hidden=""
+    ></audio>
+    <script src="scripts.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/app.js"></script>
+    <script src="webcam.js"></script>
+  </body>
+</html>
