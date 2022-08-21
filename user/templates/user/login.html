@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="wrapper" style="text-align:center">
-        <h1>회원가입</h1>
+        <h1>로그인</h1>
         <form method="POST">
             {% csrf_token %} {{form.as_p}}
             이메일: <br>
@@ -16,11 +16,12 @@
             <br>
             비밀번호: <br>
             <input type="password" name="password1">
-            <br>
-            비밀번호 확인: <br>
-            <input type="password" name="password2">
             <br><br>
-            <input type="submit" value="Sign Up!">
+            <input type="submit" value="로그인">
+            <br>
+            <a href="{% url 'register' %}">
+                <input type="submit" value="회원가입">
+            </a>
         </form>
     </div>
 </body>
