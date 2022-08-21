@@ -9,4 +9,5 @@ from rest_framework import permissions
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("users/", include('user.urls')),
+    path("chats/", include('chat.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

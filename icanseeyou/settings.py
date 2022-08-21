@@ -2,20 +2,22 @@ import os
 import dj_database_url
 import environ
 from pathlib import Path
+from decouple import config
 
 env = environ.Env()
 environ.Env.read_env()
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 DEBUG = (bool, True)
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-
+NUMB_TURN_CREDENTIAL = config('NUMB_TURN_CREDENTIAL', default=None)
+NUMB_TURN_USERNAME = config('NUMB_TURN_USERNAME', default=None)
 
 
 INSTALLED_APPS = [
@@ -25,9 +27,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
     "rest_framework",
     "user",
     "record",
+    
+    "chat.app.ChatConfig",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -99,12 +105,22 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+USE_L10N = True
 
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Channels
+ASGI_APPLICATION = 'icanseeyou.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

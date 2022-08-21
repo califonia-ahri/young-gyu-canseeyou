@@ -26,6 +26,7 @@ class RoomViewSet(viewsets.ModelViewSet):
         profile = Profile.objects.get(user=self.request.user)
         end_time = timezone.now()
         serializer.save(user=self.request.user, profile=profile, end_time=end_time)
+        return serializer
         
 class DetailViewSet(viewsets.ModelViewSet):
     queryset = Detail.objects.all()
@@ -41,3 +42,4 @@ class DetailViewSet(viewsets.ModelViewSet):
         end_focus = timezone.now()
         durations = end_focus - self.request.start_focus
         serializer.save(user=self.request.user, profile=profile, duration=durations, end_focus=end_focus)
+        return serializer
