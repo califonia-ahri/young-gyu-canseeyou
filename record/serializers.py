@@ -1,34 +1,25 @@
 from rest_framework import serializers
 
 from user.serializers import ProfileSerializer
-from .models import Party, Detail
+from .models import Room, Detail
 
 class DetailSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(read_only=True)
     class Meta:
         model = Detail
-        fields = ("pid","user", "start_focus", "end_focus")
-    
-    def to_representation(self, instance):
-        self.fields['pid'] = PartyRepresentationSerializer(read_only=True)
-        return super(DetailSerializer, self).to_representation(instance)
+        fields = ("RID", "profile", "duration", "start_focus", "end_focus")
 
 class DetailCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Detail
-        fields = ("user", "start_focus", "end_focus")
 
-class PartySerializer(serializers.ModelSerializer):
+class RoomSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(read_only=True)
     detail = DetailSerializer(read_only=True, many=True)
     class Meta:
-        model = Party
-        fields = ("PID", "user", "start_time", "end_time", "detail")
+        model = Room
+        field = ("RID", "profile", "start_time", "end_time", "detail")
         
-class PartyCreateSerializer(serializers.ModelSerializer):
+class RoomCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Party
-        fields = ("user", "start_time", "end_time")
-
-class PartyRepresentationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Party
-        fields = ("PID", )
+        model = Room

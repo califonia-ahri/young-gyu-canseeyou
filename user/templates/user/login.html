@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="wrapper" style="text-align:center">
+    <div class="wrapper" style="text-align: center">
         <h1>로그인</h1>
         <form method="POST">
-            {% csrf_token %} {{form.as_p}}
+            {% csrf_token %} {{form.as_p()}}
             이메일: <br>
             <input type="email" name="email">
             <br>
@@ -22,7 +22,7 @@
             <a href="{% url 'register' %}">
                 <input type="submit" value="회원가입">
             </a>
-        </form>
+        </form> 
     </div>
 </body>
 </html>

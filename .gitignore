@@ -1,7 +1,13 @@
-// .gitignore
-__pycache__/
-*.py[cd]
-
+*.pyc
+*~
+__pycache__
+.DS_Store
+*migrations/
+*.sqlite3
+debug-error.log
+*media/
+# *static/
+nohup.out
 .Python
 myvenv/
 
