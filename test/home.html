@@ -1,74 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" initial-scale="1.0" />
     <title>Eye Can See You</title>
-    <link rel="stylesheet" href="style.css" media="(min-width: 768px)" />
-  </head>
+    <link rel="stylesheet" href="css/style.css" media="(min-width: 768px)" />
+</head>
 
-  <body>
+<body>
     <div id="layout">
-      <div id="navBar">
-        <img src="Logo_eye.png" id="logo" alt="Logo" />
-        <div id="menu">
-          <a class="links" href="home.html">Meeting</a>
-          <a class="links" href="statics.html">Statics</a>
-          <a class="links" href="settings.html">Settings</a>
-        </div>
-        <input type="button" value="sign in" id="signIn" />
-      </div>
-      <div id="title">
-        <img src="Logo_extracted.png" id="logo_ex" alt="Logo" />
-        <div id="heading">Eye Can See You</div>
-        <div id="subtitle">for everyone</div>
-      </div>
-      <div id="wrapper">
-        <div id="inner">
-          <div id="box1">
-            <div id="myStream">
-              <video
-                id="myFace"
-                autoplay
-                playsinline
-                muted
-                width="300"
-                height="300"
-              ></video>
-              <p></p>
-              <button id="mute">Mute</button
-              ><button id="camera">Camera Turn Off</button>
-              <button id="startbutton">Take photo</button>
+        <div id="navBar">
+            <img src="Logo_eye.png" id="logo" alt="Logo" />
+            <div id="menu">
+                <a class="links" href="home.html">Meeting</a>
+                <a class="links" href="statics.html">Statics</a>
+                <a class="links" href="settings.html">Settings</a>
             </div>
-            <div id="welcome">
-              <form>
-                <input placeholder="room name" required type="text" /><button>
+            <input type="button" value="sign out" id="signOut" />
+        </div>
+        <div id="title">
+            <img src="Logo_extracted.png" id="logo_ex" alt="Logo" />
+            <div id="heading">Eye Can See You</div>
+            <div id="subtitle">for everyone</div>
+        </div>
+        <div id="wrapper">
+            <div id="inner">
+                <div id="box1">
+                    <div id="myStream">
+                        <video id="myFace" autoplay playsinline muted width="300" height="300"></video>
+                        <p></p>
+                        <button id="mute">Mute</button
+              ><button id="camera">Camera Turn Off</button>
+                        <button id="startbutton">Take photo</button>
+                    </div>
+                    <div id="welcome">
+                        <form>
+                            <input placeholder="room name" required type="text" /><button>
                   Enter Room
                 </button>
-              </form>
-              <h4>Open Rooms:</h4>
-              <ul></ul>
-            </div>
-            <div id="room">
-              <h3>Unknown</h3>
-              <ul></ul>
-              <form id="name">
-                <input placeholder="nickname" required type="text" /><button>
+                        </form>
+                        <h4>Open Rooms:</h4>
+                        <ul></ul>
+                    </div>
+                    <div id="room">
+                        <h3>Unknown</h3>
+                        <ul></ul>
+                        <form id="name">
+                            <input placeholder="nickname" required type="text" /><button>
                   Save
                 </button>
-              </form>
-              <form id="msg">
-                <input placeholder="message" required type="text" /><button>
+                        </form>
+                        <form id="msg">
+                            <input placeholder="message" required type="text" /><button>
                   Send
                 </button>
-              </form>
-            </div>
-          </div>
-          <div id="box2">
-            <main>
-              <div class="contentarea">
-                <div class="camera">
-                  <video id="video">Video stream not available.</video
+                        </form>
+                    </div>
+                </div>
+                <div id="box2">
+                    <main>
+                        <div class="contentarea">
+                            <div class="camera">
+                                <video id="video">Video stream not available.</video
                   ><button id="startbutton">Take photo</button>
                 </div>
                 <canvas id="canvas"></canvas>
