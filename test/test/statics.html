@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <title>Eye Can See You</title>
+    <link rel="stylesheet" href="css/style.css" media="(min-width: 768px)" />
+    <link rel="stylesheet" href="css/calendar_style.css" />
+</head>
+
+<body>
+    <div id="layout">
+        <div id="navBar">
+            <img src="Logo_eye.png" id="logo" alt="Logo" />
+            <div id="menu">
+                <a class="links" href="home.html">Meeting</a>
+                <a class="links" href="statics.html">Statics</a>
+                <a class="links" href="settings.html">Settings</a>
+            </div>
+            <input type="button" value="sign out" id="signOut" />
+        </div>
+        <div id="title">
+            <img src="Logo_extracted.png" id="logo_ex" alt="Logo" />
+            <div id="heading">Eye Can See You</div>
+            <div id="subtitle">for everyone</div>
+        </div>
+        <div id="wrapper">
+            <div id="inner">
+                <div id="box1">
+                    <div class="calendar">
+                        <div class="header">
+                            <div class="year-month"></div>
+                            <div class="nav">
+                                <button class="nav-btn go-prev" onclick="prevMonth()">
+                    &lt;
+                  </button>
+                                <button class="nav-btn go-today" onclick="goToday()">
+                    Today
+                  </button>
+                                <button class="nav-btn go-next" onclick="nextMonth()">
+                    &gt;
+                  </button>
+                            </div>
+                        </div>
+                        <div class="main">
+                            <div class="days">
+                                <div class="day">일</div>
+                                <div class="day">월</div>
+                                <div class="day">화</div>
+                                <div class="day">수</div>
+                                <div class="day">목</div>
+                                <div class="day">금</div>
+                                <div class="day">토</div>
+                            </div>
+                            <div class="dates"></div>
+                        </div>
+                    </div>
+                    <script src="index.js"></script>
+                </div>
+                <div id="box2"></div>
+            </div>
+        </div>
+        <div id="footerSections">
+            <div id="footerSection1">
+                <div class="sectionName">footer section 01</div>
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="explain">
+                    Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle.
+                </div>
+            </div>
+
+            <div id="footerSection2">
+                <div class="sectionName">footer section 02</div>
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="explain">
+                    By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished
+                </div>
+            </div>
+
+            <div id="footerSection3">
+                <div class="sectionName">footer section 03</div>
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="explain">
+                    And the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver.
+                </div>
+            </div>
+
+            <div id="footerSection4">
+                <div class="sectionName">footer section 04</div>
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="explain">
+                    Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.
+                </div>
+            </div>
+        </div>
+        <div id="bottomBar">
+            <div id="copyright">© Copyright</div>
+        </div>
+    </div>
+</body>
+
+</html>
