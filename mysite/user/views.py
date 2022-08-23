@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
+from django.urls import reverse, reverse_lazy
 from .models import Profile
 from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from record.models import Room, Detail
 
 from record.serializers import DetailSerializer
@@ -12,13 +13,12 @@ from .permissions import CustomReadOnly
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
+    success_url = reverse_lazy('login_view')
+    template_name = 'user/register.html'
     
-    def get(self,request):
-        return render(request, 'user/register.html')
+    def get_success_url(self):
+        return reverse('login_view', kwargs={'pk':self.object.user.pk})
     
-    def post(self, request):
-        return redirect('login_view')
-
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     
@@ -40,13 +40,16 @@ class ProfileView(generics.RetrieveAPIView):
     def get(self, request):
         return render(request, 'user/home.html', {'user':request.user})
 
-class SettingView(generics.RetrieveUpdateAPIView):
+class SettingView(generics.GenericAPIView):
     queryset = Profile.objects.all()
     permission_classes = [CustomReadOnly]
     serializer_class = SettingSerializer
     
     def get(self, request):
         return render(request, 'user/setting.html')
+    def post(self, serializer):
+        profile = Profile.objects.get_object_or_404(user=self.request.user)
+        serializer.save(user=self.request.user, profile=profile)
     
 class StatisView(generics.RetrieveAPIView):
     queryset = Room.objects.all()

@@ -20,7 +20,6 @@
           <a class="links" href="{% url 'statis_view' %}">Statics</a>
           <a class="links" href="{% url 'setting_view' %}">Settings</a>
         </div>
-        <input type="button" value="sign out" id="signOut" />
       </div>
       <div id="title">
         <img src="/media/default.png" id="logo_ex" alt="Logo" />
@@ -31,6 +30,7 @@
         <div id="inner">
           <div id="box1">
             <form action="" method="post">
+              {% csrf_token %}{{form.as_p}}
               <fieldset style="width: 150">
                 <legend>간단 입력 사항</legend>
                 <br />

@@ -32,10 +32,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 {"password":"Password fields didn't match."}
             )
-            return redirect('register_view')
         return data
     
-    def create(self, validated_data):               # override create method and create user and token
+    def create(self, request, validated_data):               # override create method and create user and token
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email']
