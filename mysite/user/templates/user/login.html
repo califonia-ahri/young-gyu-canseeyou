@@ -40,26 +40,24 @@
       <div id="wrapper">
         <div id="inners">
           <div id="box1">
-            <form action="" method="post">
-              
-              <fieldset style="width: 150">
-                <legend>
-                  <div class="legend"></div>
-                </legend>
-                {% csrf_token %} {{form.as_p}}
-                ID : 
-                <input type="email" name="email" /><br />
+            <fieldset style="width: 150">
+              <legend>
+                <div class="legend"></div>
+              </legend>
+              <form action="{%url 'login_view'%}" method="post">
+                {% csrf_token %} {{form.as_p}} ID :
+                <input type="ID" name="username" id="username" /><br />
                 Password :
-                <input type="password" name="password" />
-                <br>
-                <input type="submit" value="login!">
-                <a href="{% url 'register_view' %}">
-                <input type="submit" value="login!">
-
-                </a>
-              </fieldset>
-            </form>
+                <input type="password" name="password" id="password" />
+                <br />
+                <input type="submit" value="로그인" />
+                <br />
+              </form>
+            </fieldset>
           </div>
+          <a href="{% url 'register_view' %}">
+            <input type="submit" value="회원가입" />
+          </a>
         </div>
       </div>
     </div>
