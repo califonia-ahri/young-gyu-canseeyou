@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
 from .models import Profile
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
+from record.models import Room, Detail
 
+from record.serializers import DetailSerializer
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, SettingSerializer
 from .permissions import CustomReadOnly
 
@@ -37,8 +39,19 @@ class ProfileView(generics.RetrieveAPIView):
     
     def get(self, request):
         return render(request, 'user/home.html', {'user':request.user})
-    
-class SettingsView(generics.RetrieveUpdateAPIView):
+
+class SettingView(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     permission_classes = [CustomReadOnly]
     serializer_class = SettingSerializer
+    
+    def get(self, request):
+        return render(request, 'user/setting.html')
+    
+class StatisView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    permission_classes = [CustomReadOnly]
+    serializer_class = DetailSerializer
+
+    def get(self, request):
+        return render(request, 'record/statics.html')

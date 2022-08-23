@@ -1,0 +1,285 @@
+#layout>* {
+    border: 1px solid gray;
+    position: relative;
+}
+
+#layout {
+    display: grid;
+    grid-template-rows: 64px 200px 712px 184px 48px;
+    margin-bottom: 60px;
+}
+
+#logo {
+    position: absolute;
+    width: 70px;
+    height: 50px;
+    left: 20%;
+    top: 16px;
+}
+
+#myFace {
+    width: 300px;
+    height: 240px;
+    outline: none;
+    border: 5px solid #45c9d0;
+    padding: 10px;
+}
+
+#logo_ex {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 230px;
+    top: 16px;
+}
+
+#menu {
+    position: absolute;
+    left: 15%;
+    right: 18%;
+    top: 28.57%;
+    bottom: 42.86%;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    /* Text_blue */
+    color: rgba(0, 0, 0, 0.88);
+}
+
+.links {
+    margin-left: 3%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* unvisited link */
+
+a:link {
+    color: black;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: black;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: hotpink;
+}
+
+
+/* selected link */
+
+a:active {
+    color: blue;
+}
+
+#signOut {
+    position: absolute;
+    left: 86.88%;
+    right: 5.62%;
+    top: 12.5%;
+    bottom: 12.5%;
+}
+
+#title {
+    background: linear-gradient( 263.53deg, rgba(255, 255, 255, 0.32) 0.24%, rgba(255, 255, 255, 0.08) 100.87%), #aaff87;
+}
+
+#heading {
+    position: absolute;
+    left: 5.78%;
+    right: 5.62%;
+    top: 24%;
+    bottom: 48%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 56px;
+    /* identical to box height, or 87% */
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: null;
+    font-variant: small-caps;
+    /* #FFFFFF */
+    color: #ffffff;
+}
+
+#subtitle {
+    position: absolute;
+    left: 5.78%;
+    right: 5.62%;
+    top: 64%;
+    bottom: 24%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    /* identical to box height, or 100% */
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.32em;
+    text-transform: null;
+    /* #FFFFFF */
+    color: #ffffff;
+}
+
+#wrapper {
+    background: #e7ff87;
+}
+
+#inner {
+    height: 584px;
+    margin-top: 48px;
+    margin-bottom: 80px;
+    margin-left: 8%;
+    margin-right: 8%;
+    display: grid;
+    grid-template-columns: 490px 1fr;
+}
+
+#box1 {
+    background-color: white;
+    margin-right: 16px;
+}
+
+#box2 {
+    background-color: white;
+}
+
+#footerSection1 {
+    position: absolute;
+    left: 5.62%;
+    right: 73.12%;
+    top: 20.69%;
+    bottom: 31.03%;
+}
+
+#footerSection2 {
+    position: absolute;
+    left: 28.12%;
+    right: 50.62%;
+    top: 20.69%;
+    bottom: 31.03%;
+}
+
+#footerSection3 {
+    position: absolute;
+    left: 50.62%;
+    right: 28.12%;
+    top: 20.69%;
+    bottom: 31.03%;
+}
+
+#footerSection4 {
+    position: absolute;
+    left: 73.12%;
+    right: 5.62%;
+    top: 20.69%;
+    bottom: 31.03%;
+}
+
+.sectionName {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 15px;
+}
+
+.line1 {
+    background: rgba(0, 0, 0, 0.08);
+    height: 2px;
+}
+
+.line2 {
+    background: linear-gradient( 234.67deg, rgba(255, 255, 255, 0.16) 0.24%, rgba(255, 255, 255, 0) 100.87%), #006be8;
+    height: 2px;
+    width: 30%;
+    position: relative;
+    bottom: 2px;
+}
+
+.explain {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    /* or 167% */
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.64);
+    margin-top: 15px;
+}
+
+#copyright {
+    position: absolute;
+    left: 41.25%;
+    right: 41.25%;
+    top: 33.33%;
+    bottom: 33.33%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+#instagram {
+    position: absolute;
+    left: 93.12%;
+    right: 5.62%;
+    top: 33.33%;
+    bottom: 33.33%;
+}
+
+#twitter {
+    position: absolute;
+    left: 91.25%;
+    right: 7.5%;
+    top: 33.33%;
+    bottom: 33.33%;
+}
+
+#facebook {
+    position: absolute;
+    left: 89.38%;
+    right: 9.38%;
+    top: 33.33%;
+    bottom: 33.33%;
+}
+
+#submitBtn {
+    position: relative;
+    text-align: center;
+    left: 40px;
+}
+
+#lgdHead {
+    text-align: center;
+}

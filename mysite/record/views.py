@@ -41,3 +41,4 @@ class DetailViewSet(viewsets.ModelViewSet):
         end_focus = timezone.now()
         durations = end_focus - self.request.start_focus
         serializer.save(user=self.request.user, profile=profile, duration=durations, end_focus=end_focus)
+        
