@@ -144,7 +144,6 @@ a:active {
 
 #wrapper {
     background: #e7ff87;
-
 }
 
 #inner {
@@ -161,7 +160,6 @@ a:active {
     background-color: white;
     margin-right: 16px;
     height: 800px;
-    
 }
 
 #box2 {
@@ -278,19 +276,22 @@ a:active {
     bottom: 33.33%;
 }
 
-#submitBtn {
-    position: relative;
-    text-align: center;
-    left: 40px;
-}
-
 #lgdHead {
     text-align: center;
 }
-video.element
-{
-    height: 240px;
-    width: 320px;
+
+.contentarea {
+    margin: 5px;
+}
 
 
+#settingRoom {
+    padding: 20px;
+}
+.chatbox {
+    width: auto;
+    height: 200px;
+    border: 10px solid #e8c48f;
+    padding: 5px;
+    overflow: auto;
 }

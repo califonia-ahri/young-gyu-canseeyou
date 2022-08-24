@@ -261,7 +261,7 @@ function warningMessage(user, data){
 
 
 const constraints = {
-    'video': true,
+    'video':{ width: { exact: 320 }, height: { exact: 240 } },
     'audio': true
 }
 
