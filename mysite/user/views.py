@@ -11,6 +11,7 @@ from record.serializers import DetailSerializer
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, SettingSerializer
 from .permissions import CustomReadOnly
 from rest_framework.authtoken.models import Token
+from datetime import datetime, timedelta
 
 class RegisterView(generics.GenericAPIView):
     queryset = User.objects.all()
@@ -87,4 +88,32 @@ class StatisView(generics.RetrieveAPIView):
     serializer_class = DetailSerializer
 
     def get(self, request):
+        # user = User.objects.get(auth_token=request.COOKIES.get('token'))
+        # rooms = Room.objects.filter(user=user, start_time=request.GET.get('start_time'))
+        # details = Detail.objects.filter(user=user, start_time=request.GET.get('start_time'))
+        # room_time = datetime(0,0,0,0,0,0)
+        # detail_time = datetime(0,0,0,0,0,0)
+        
+        # for room in rooms:
+        #     room_time += (room.end_time - room.start_time)
+        
+        # for detail in details:
+        #     detail_time += (detail.end_focus - detail.start_focus)
+        
         return render(request, 'record/statics.html')
+    
+    def post(self, request):
+        user = User.objects.get(auth_token=request.COOKIES.get('token'))
+        now = datetime(request.POST['year'], request.POST['month'], request.POST['date'])
+        rooms = Room.objects.filter(user=user, start_time=now)
+        details = Detail.objects.filter(user=user, start_focus=now)
+        room_time = datetime(0,0,0,0,0,0)
+        detail_time = datetime(0,0,0,0,0,0)
+        
+        for room in rooms:
+            room_time += (room.end_time - room.start_time)
+        
+        for detail in details:
+            detail_time += (detail.end_focus - detail.start_focus)
+        
+        return render(request, 'record/statics.html', {"room_time":room_time, "detail_time":detail_time})

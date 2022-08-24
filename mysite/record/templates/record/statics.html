@@ -19,7 +19,7 @@
         <div id="menu">
           <a class="links" href="{% url 'home_view'%}">Meeting</a>
           <a class="links" href="{% url 'statis_view' %}">Statics</a>
-          <a class="links" href="{%url 'setting_view' %}">Settings</a>
+          <a class="links" href="{% url 'setting_view' %}">Settings</a>
         </div>
       </div>
       <div id="title">
@@ -60,7 +60,11 @@
             </div>
             <script src="/static/js/index.js"></script>
           </div>
-          <div id="box2"></div>
+          <div id="box2">
+            {% if not room_time %}
+            <img src="/media/no_data.png">
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>

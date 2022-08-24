@@ -3,6 +3,7 @@ let date = new Date();
 const renderCalender = () => {
     const viewYear = date.getFullYear();
     const viewMonth = date.getMonth();
+    const viewDay = date.getDay();
 
     document.querySelector(".year-month").textContent = `${viewYear}년 ${
     viewMonth + 1
@@ -40,7 +41,15 @@ const renderCalender = () => {
             i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
         dates[
             i
-        ] = `<div class="date"><span class=${condition} id="thisdate" onclick="alert('you clicked inside the header');">${date} </span></div>`;
+        ] = `<form name="search-form" id="${date}" action="" class="date">
+                <input type="hidden" name="year" value=${viewYear}>
+                <input type="hidden" name="month" value=${viewMonth+1}>
+                <input type="hidden" name="date" value=${date}>
+                <div class=${condition} id="thisdate" onClick="document.forms[${date}].submit();">
+                    ${date}
+                </div>
+    </form>`;
+        // ] = `<form class="date"><span class=${condition} id="thisdate" onclick="alert('you clicked inside the header');">${date} </span></form>`;
     });
 
     document.querySelector(".dates").innerHTML = dates.join("");
