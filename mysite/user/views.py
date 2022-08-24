@@ -1,3 +1,4 @@
+import py_compile
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from .models import Profile
@@ -12,6 +13,7 @@ from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer,
 from .permissions import CustomReadOnly
 from rest_framework.authtoken.models import Token
 from datetime import datetime, timedelta
+from ml import test2
 
 class RegisterView(generics.GenericAPIView):
     queryset = User.objects.all()
@@ -117,3 +119,9 @@ class StatisView(generics.RetrieveAPIView):
             detail_time += (detail.end_focus - detail.start_focus)
         
         return render(request, 'record/statics.html', {"room_time":room_time, "detail_time":detail_time})
+
+class TestView(generics.GenericAPIView):
+    
+    def get(self, request):
+        test2.starting()
+        return render(request, 'home_view')

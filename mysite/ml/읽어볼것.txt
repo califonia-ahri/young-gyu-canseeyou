@@ -1,0 +1,16 @@
+
+#########################################################
+shape_predictor_68_face_landmarks.dat haarcascade_eye_tree_eyeglasses.xml 파일은 해당 디렉토리에 있으면 됨
+수정할려면 get_eye_cord.py의 
+	predictor = dlib.shape_predictor(
+		"C:\\anaconda3\\envs\\119pj\\shape_predictor_68_face_landmarks.dat") 
+
+	eye_cascade = cv2.CascadeClassifier(
+       		 "C:\\119pj\\haarcascade_eye_tree_eyeglasses.xml")  이부분 수정하면 됨.
+ml.py --> get_ml_path(address) address는 디렉토리 경로로 ml.pkl 경로 리턴
+get_focus_int_by_ml(address,address_4) address는 디렉토리 경로, address_4는 ml.pkl경로, focus값(0,1,2)리턴
+#########################################################
+
+
+test2.py 실행하면됨.
+실행시 경로 넣기, 경로에 shape_predictor_68_face_landmarks.dat haarcascade_eye_tree_eyeglasses.xml 파일필수
