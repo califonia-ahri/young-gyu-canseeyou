@@ -144,25 +144,31 @@ a:active {
 
 #wrapper {
     background: #e7ff87;
+    display: grid;
+    justify-items: center;
 }
 
 #inner {
-    height: 584px;
+    height: 800px;
     margin-top: 48px;
     margin-bottom: 80px;
     margin-left: 8%;
     margin-right: 8%;
     display: grid;
-    grid-template-columns: 490px 1fr;
+    grid-template-columns: 490px 490px;
+    width: 980px;
+    align-content: center;
 }
 
 #box1 {
     background-color: white;
     margin-right: 16px;
+    height: 800px;
 }
 
 #box2 {
     background-color: white;
+    height: 800px;
 }
 
 #footerSection1 {
@@ -274,12 +280,22 @@ a:active {
     bottom: 33.33%;
 }
 
-#submitBtn {
-    position: relative;
-    text-align: center;
-    left: 40px;
-}
-
 #lgdHead {
     text-align: center;
+}
+
+.contentarea {
+    margin: 5px;
+}
+
+.chatbox {
+    width: auto;
+    height: 200px;
+    border: 10px solid #e8c48f;
+    padding: 5px;
+    overflow: auto;
+}
+
+#settingRoom {
+    padding: 20px;
 }

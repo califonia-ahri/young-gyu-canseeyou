@@ -9,6 +9,11 @@
       href="/static/css/style.css"
       media="(min-width: 768px)"
     />
+    <link
+      rel="stylesheet"
+      href="/static/css/btn_style.css"
+      media="(min-width: 768px)"
+    />
   </head>
 
   <body>
@@ -31,7 +36,22 @@
       <div id="wrapper">
         <div id="inner">
           <div id="box1">
-            <form action="{% url 'setting_view' %}" method="post">
+            <hr style="margin: 20px; margin-bottom: 0px" />
+              <form action="{% url 'setting_view' %}" method="post">
+                {% csrf_token %}{{form.as_p}}
+                        <div id="settingRoom">
+                            <legend style="text-align: center; font-size: 20px">
+                                간단 입력 사항
+                            </legend>
+                            <hr style="margin-top: 20px; margin-bottom: 0px" />
+                            <br /> 이름
+                            <input class="setInput" type="text" name="nickname" value={{user.nickname}} /><br /><br /> 사진 촬영 주기
+                            <input class="setInput" type="number" name="photo_tempo" min="10" max="30" value={{user.photo_tempo}} /><br /><br /> 알람주기
+                            <input class="setInput" type="number" name="noti_tempo" min="10" max="30" value={{user.noti_tempo}} /><br /><br />
+                            <input class="setInput" id="submitBtn" type="submit" value="제출" />
+                        </div>
+              <hr style="margin: 20px" />
+            <!-- <form action="{% url 'setting_view' %}" method="post">
               {% csrf_token %}{{form.as_p}}
               <fieldset style="width: 150">
                 <legend>간단 입력 사항</legend>
@@ -57,7 +77,9 @@
                   <input type="submit" value="제출" />
                 </div>
               </fieldset>
-            </form>
+            </form> -->
+              </form>
+            <button name="userModeling">사용자 모델링 시작</button>
           </div>
           <div id="box2"></div>
         </div>
