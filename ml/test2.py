@@ -12,12 +12,11 @@ else:
 
     address = sys.argv[1]
     address_1 = address+"\ml_model.pkl"
-    if not os.path.isfile(address_1):
+    if not os.path.exists(address_1):
         print("no ml file")
         print("Init")
         address_1 = get_ml_path(address)
     else :
         print("exist ml file")
-
     result = get_focus_int_by_ml(address,address_1)
     print("eye_focus_predition_by_Ml_model : %d" %result)

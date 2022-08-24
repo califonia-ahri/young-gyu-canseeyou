@@ -21,7 +21,7 @@ def DBSCAN_Clustering(address) :
     file = '\eye_cord.csv'
 
     file1 = address+file
-    if not os.path.isfile(file1):
+    if not os.path.exists(file1):
         #print("no %s file1" % file1)
         exit()
     else :

@@ -43,21 +43,25 @@ def find_eye_cord(address) :
     import os
     import matplotlib.pyplot as plt
     import glob
+
     global roi
     global cord_list
+
+    cord_list = (0, 0) # wrong eye_cord.
+
     print("Find eye cord")
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor(
-        "C:\\anaconda3\\envs\\119pj\\shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
-    eye_cascade = cv2.CascadeClassifier(
-        "C:\\119pj\\haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
+    predictor = dlib.shape_predictor( os.path.abspath(os.path.join(address, os.pardir))+"\shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
+    eye_cascade = cv2.CascadeClassifier(os.path.abspath(os.path.join(address, os.pardir))+"\haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
     file1 = address+file
-    if not os.path.isfile(address+"\*.PNG"):
+
+    if not glob.glob(address+"\*.PNG"):
         print("There is no Img file")
         print("plz put in Img in %s" % address)
         exit()
     for img in glob.glob(address+"\*.PNG"):
-        if not os.path.isfile(file1):
+        print(img)
+        if not os.path.exists(file1):
             #print("no %s file" % file1)
             eye_cord = pd.DataFrame( [[0,480,270]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
 
@@ -100,7 +104,8 @@ def find_eye_cord(address) :
                     plt.show()'''
 
                     _, threshold = cv2.threshold(gray_roi, 21, 255, cv2.THRESH_BINARY_INV)
-                    _, contours, _ = cv2.findContours(threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+                    contours, _ = cv2.findContours(threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
                     contours = sorted(contours, key=lambda x: cv2.contourArea(x), reverse=True)
 
 

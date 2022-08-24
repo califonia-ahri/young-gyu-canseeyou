@@ -9,12 +9,12 @@ def eye_scope_model_making(address,address1,address2) :
     print("Start making Model")
     file = '\eye_trace_on_focus_scope_data.csv'
 
-    if not os.path.isfile(address) :
+    if not os.path.exists(address) :
         #print("no %s file" % address)
         exit()
     else :
         #print("exist %s file" % address)
-        if not os.path.isfile(address1):
+        if not os.path.exists(address1):
             #print("no %s file" % address1)
             exit()
         else:
@@ -30,8 +30,8 @@ def eye_scope_model_making(address,address1,address2) :
             Y_train = df['focus']
             Y_test = []
             df_dtc = DecisionTreeClassifier()
-            df_dtc.fit(X_train, Y_train)
-            predition = df_dtc.predict(X_test)  # test
+            df_dtc.fit(X_train.values, Y_train.values)
+            predition = df_dtc.predict(X_test.values)  # test
             # print(predition[0])
             rows, _ = smp.shape
 

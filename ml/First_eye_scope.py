@@ -17,13 +17,13 @@ def get_eye_scope(address,address1,address2) :
     file = '\eye_trace_scope_data.csv'
     file1 = '\eye_trace_on_focus_scope_data.csv'
 
-    if not os.path.isfile(address) :
+    if not os.path.exists(address) :
         #print("no %s file" % address)
         exit()
     else :
         #print("exist %s file" % address)
 
-        if not os.path.isfile(address1):
+        if not os.path.exists(address1):
             #print("no %s file" % address1)
             exit()
         else:
@@ -64,7 +64,7 @@ def get_eye_scope(address,address1,address2) :
         return address2
         '''
             if  predition[0] == default_label : ## if image cord is on eye_trace_scope saved as csv named eye_trace_on_focus_scope_data.csv
-                if not os.path.isfile(address2):
+                if not os.path.exists(address2):
                     print("no file")
                     eye_trace_on_focus_scope_data = pd.DataFrame(columns=['num','x_cord', 'y_cord','focus'], dtype=float)
                     for i in range(0,rows) :
@@ -82,7 +82,7 @@ def get_eye_scope(address,address1,address2) :
         
                     # 0 is on focus, 1 is on eye_scope, 2 is out of eye_scope
             else :
-                if not os.path.isfile(address2):
+                if not os.path.exists(address2):
                     eye_trace_on_focus_scope_data = pd.DataFrame(columns=['num', 'x_cord', 'y_cord', 'focus'], dtype=float)
                     print("no file")
         

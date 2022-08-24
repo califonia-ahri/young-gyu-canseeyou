@@ -1,6 +1,6 @@
 def first_step(address):
-    from get_eye_cord import *
-    from DBSCAN_Clustering import *
+    from get_eye_cord import get_img,del_img,find_eye_cord
+    from DBSCAN_Clustering import DBSCAN_Clustering
 
     print("moving your eyes as possible as you can")
     get_img(address)
@@ -12,8 +12,8 @@ def first_step(address):
 
 
 def second_step(address,address_1):
-    from get_eye_cord import *
-    from First_eye_scope import *
+    from get_eye_cord import get_img,find_eye_cord,del_img
+    from First_eye_scope import get_eye_scope
 
     print("moving your eyes as possible as you can")
     get_img(address)
@@ -27,8 +27,8 @@ def second_step(address,address_1):
 
 
 def third_step(address,address_3):
-    from get_eye_cord import *
-    from get_ml_model import *
+    from get_eye_cord import get_img,find_eye_cord,del_img
+    from get_ml_model import eye_scope_model_making
 
     print("moving your eyes within your focus scope")
     get_img(address)
