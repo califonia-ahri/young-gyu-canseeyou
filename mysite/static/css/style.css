@@ -144,6 +144,8 @@ a:active {
 
 #wrapper {
     background: #e7ff87;
+    display: grid;
+    justify-items: center;
 }
 
 #inner {
@@ -153,7 +155,9 @@ a:active {
     margin-left: 8%;
     margin-right: 8%;
     display: grid;
-    grid-template-columns: 490px 1fr;
+    grid-template-columns: 490px 490px;
+    width: 980px;
+    align-content: center;
 }
 
 #box1 {
