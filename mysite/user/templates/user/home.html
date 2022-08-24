@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <title>Eye Can See You</title>
+    <link rel="stylesheet" href="../../../static/css/style.css" media="(min-width: 768px)" />
+    
+</head>
+
+<body>
+ 
+    <div id="layout">
+        <div id="navBar">
+            <img src="../../../media/default.png" id="logo" alt="Logo" />
+            <div id="menu">
+                <a class="links" href="{% url 'home_view'%}">Meeting</a>
+                <a class="links" href="{% url 'statis_view' %}">Statics</a>
+                <a class="links" href="{% url 'setting_view' %}">Settings</a>
+            </div>
+            <input type="button" value="sign out" id="signOut" />
+        </div>
+        <div id="title">
+            <img src="../../../media/default.png" id="logo_ex" alt="Logo" />
+            <div id="heading">Eye Can See You</div>
+            <div id="subtitle">for everyone</div>
+        </div>
+        <div id="wrapper" style="height : 880px">
+            <div id="inner" style= "height:780px">
+                <div id="box1">
+                  <h3 id="label-username">유저이름 입력</h3>
+
+                  <div>
+                    <input id="username"><button id="btn-join">방에 접속하기</button>
+                  </div>
+                
+                  <div class="main-grid-container">
+                    <!-- for grid layout
+                    assign class video-grad-layout -->
+                    <div id="video-container" class="contentarea">
+                
+                      <div class="camera">
+                        <video id="local-video" style="float: left;" height="180" width="288"autoplay playsinline ></video>
+                        <button id="startbutton">Take photo</button>
+                      </div>
+                      <button id="btn-toggle-audio" class="btn btn-dark">Audio Mute</button>
+                      <button id="btn-toggle-video" class="btn btn-dark">Video Off</button>
+                
+
+                
+                    </div>
+                    
+
+                  </div>
+<!------------------------------------------->
+                </div>
+                <div id="box2">
+                  <div id="chat">
+                    <h3> CHAT </h3>
+                    <div id="messages">
+                      <ul id="message-list"></ul>
+                    </div>
+                    <div id="ct"><input id="msg"><button id="btn-send-msg">send</button></div>
+              
+                    <button id="btn-share-screen">Share Screen</button>
+                    <button id="btn-record-screen">Record Screen</button>
+                    
+                    <button class="view-button" id="share-file-button">Share File</button>
+                    <div id="select-file-dialog" style="display: none;">
+                      <div id="dialog-content">
+                        <div id="select-file">
+                        <div id="label">Select a file:</div>
+                        <input type="file" id="select-file-input">
+                        </div>
+                        <div id="dialog-footer">
+                        <button id="ok-button" disabled>Ok</button>
+                        <button id="cancel-button" class="cancel-button">Cancel</button>
+                        </div>
+                      </div>
+                      </div>
+                      <canvas id="canvas"></canvas>
+                      <div class="output" style ="display :none">
+                        <img
+                        id="photo"
+                        alt="The screen capture will appear in this box."/>
+                      </div>
+                  </div>
+          </div>
+        </div>
+      </div>
+      
+      {% block content %}
+      {% endblock %}
+    <script>
+      window.addEventListener("beforeunload", (e) => {
+        console.log("bye");
+      });
+    </script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script type="text/javascript" src="{% static 'js/peer.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/screenshot.js' %}"></script>
+ 
+  </body>
+</html>
