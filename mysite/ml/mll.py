@@ -1,9 +1,9 @@
 import joblib
 import numpy as np
-from .get_eye_cord import find_eye_cord
-from .ml_init import first_step,second_step,third_step
+
 
 def get_ml_path(address):
+    from .ml_init import first_step,second_step,third_step
     print("##################################")
     print("Start Machine Learning First Step")
     print("##################################")
@@ -25,7 +25,7 @@ def get_ml_path(address):
     return address_4
 
 def get_focus_int_by_ml(address,address_4):
-
+    from .get_eye_cord import find_eye_cord
     #address is user dir path && need file
     # //shape_predictor_68_face_landmarks.dat &&//haarcascade_eye_tree_eyeglasses.xml
 

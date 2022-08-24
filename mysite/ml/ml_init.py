@@ -1,6 +1,6 @@
 def first_step(address):
-    from get_eye_cord import get_img,del_img,find_eye_cord
-    from DBSCAN_Clustering import DBSCAN_Clustering
+    from .get_eye_cord import get_img,del_img,find_eye_cord
+    from .DBSCAN_Clustering import DBSCAN_Clustering
 
     print("moving your eyes as possible as you can")
     get_img(address)

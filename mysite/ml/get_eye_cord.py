@@ -31,7 +31,7 @@ def get_img(address) :
         if ret is False:
             break
         cv2.imwrite(path_address, frame)
-        #print("img saved as %s" % path_address)
+        print("img saved as %s" % path_address)
         time.sleep(0.1)
     print("Done\n")
 
@@ -51,8 +51,8 @@ def find_eye_cord(address) :
 
     print("Find eye cord")
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor( os.path.abspath(os.path.join(address, os.pardir))+"\shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
-    eye_cascade = cv2.CascadeClassifier(os.path.abspath(os.path.join(address, os.pardir))+"\haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
+    eye_cascade = cv2.CascadeClassifier("../data/haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
+    predictor = dlib.shape_predictor( "../data/shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
     file1 = address+file
 
     if not glob.glob(address+"\*.PNG"):
