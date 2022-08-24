@@ -96,6 +96,3 @@ while True:
         eye_cord.to_csv('./eye_cord.csv',index_label = ['num'],index=False)
         #########os.remove('./Image_name or path')
         break
-
-
-cv2.destroyAllWindows()

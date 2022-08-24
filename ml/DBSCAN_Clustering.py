@@ -17,16 +17,17 @@ def DBSCAN_Clustering(address) :
     # based on  scikit-learn DBSCAN Clustering
     # using it can make Origin_data frame drop off the trash data
     # to make it usefully at least need approximately 100 or more data needed
+    print("Start DBSCAN Clustering")
     file = '\eye_cord.csv'
 
     file1 = address+file
     if not os.path.isfile(file1):
-        print("no %s file1" % file1)
+        #print("no %s file1" % file1)
         exit()
     else :
-        print("exist file1")
+        #print("exist file1")
         df = pd.read_csv(file1,usecols=[1,2])
-        print(df)
+        #print(df)
         df_copy = pd.read_csv(file1, sep=',')
         eye_trace_scope_data = pd.DataFrame( [[0,480,270]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
 
@@ -54,7 +55,8 @@ def DBSCAN_Clustering(address) :
                 eye_trace_scope_data.loc[i] = i,df_copy.loc[i][1], df_copy.loc[i][2],2
         ret_address = address+"\eye_trace_scope_data.csv"
         eye_trace_scope_data.to_csv(ret_address,index_label = ['num'],index=False)
-        print("saved as %s done" %ret_address )
+        #print("saved as %s done" %ret_address )
+        print("Done\n")
         return ret_address
         '''plt.legend()
         plt.title('eps = 0.5, min_samples = 10', size=15)

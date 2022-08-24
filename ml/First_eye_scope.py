@@ -13,21 +13,21 @@ def get_eye_scope(address,address1,address2) :
     import os.path
     from sklearn.tree import DecisionTreeClassifier
     from sklearn.model_selection import train_test_split
-
+    print("Get eye Scope")
     file = '\eye_trace_scope_data.csv'
     file1 = '\eye_trace_on_focus_scope_data.csv'
 
     if not os.path.isfile(address) :
-        print("no %s file" % address)
+        #print("no %s file" % address)
         exit()
     else :
-        print("exist %s file" % address)
+        #print("exist %s file" % address)
 
         if not os.path.isfile(address1):
-            print("no %s file" % address1)
+            #print("no %s file" % address1)
             exit()
         else:
-            print("exist %s file" % address1)
+            #print("exist %s file" % address1)
             address2 = address2+file1
             ###### 112py --> 114py get eye_cord_scope based DBSCAN Clustering
             ###### And 115py
@@ -59,7 +59,8 @@ def get_eye_scope(address,address1,address2) :
 
 
         eye_trace_on_focus_scope_data.to_csv(address2, index_label=['num'], index=False)
-        print("saved as %s done" %address2)
+        #print("saved as %s done" %address2)
+        print("Done\n")
         return address2
         '''
             if  predition[0] == default_label : ## if image cord is on eye_trace_scope saved as csv named eye_trace_on_focus_scope_data.csv
