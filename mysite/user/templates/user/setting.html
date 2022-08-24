@@ -12,13 +12,15 @@
   </head>
 
   <body>
+    {% for user in users %}
     <div id="layout">
       <div id="navBar">
         <img src="/media/default.png" id="logo" alt="Logo" />
         <div id="menu">
           <a class="links" href="{% url 'home_view' %}">Meeting</a>
-          <a class="links" href="{% url 'statis_view' %}">Statics</a>
-          <a class="links" href="{% url 'setting_view' %}">Settings</a>
+          <a class="links" href="{% url 'statis_view'%}">Statics</a>
+          <a class="links" href="{% url 'setting_view'%}">Settings</a>
+          <div>안녕하세요 {{user.nickname}}님!!</div>
         </div>
       </div>
       <div id="title">
@@ -29,31 +31,33 @@
       <div id="wrapper">
         <div id="inner">
           <div id="box1">
-            <form action="" method="post">
+            <form action="{% url 'setting_view' %}" method="post">
               {% csrf_token %}{{form.as_p}}
               <fieldset style="width: 150">
                 <legend>간단 입력 사항</legend>
                 <br />
-                이름 : <input type="text" name="username" /><br /><br />
+                이름 : <input type="text" name="nickname" value={{user.nickname}} /><br /><br />
                 사진 촬영 주기 :
                 <input
                   type="number"
-                  name="cycleTake"
+                  name="photo_tempo"
+                  value={{user.photo_tempo}}
                   min="10"
                   max="30"
                 /><br /><br />
                 알림수신 여부 :
                 <input
                   type="checkbox"
-                  name="alarmReception"
-                  value="true"
+                  name="notification"
+                  value={{user.notification}}
                 /><br /><br />
                 알람주기
                 <input
                   type="number"
-                  name="alarmCycle"
+                  name="noti_tempo"
                   min="10"
                   max="30"
+                  value={{user.noti_tempo}}
                 /><br /><br />
                 <div id="submitBtn">
                   <input type="submit" value="제출" />
@@ -64,50 +68,7 @@
           <div id="box2"></div>
         </div>
       </div>
-      <div id="footerSections">
-        <div id="footerSection1">
-          <div class="sectionName">footer section 01</div>
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="explain">
-            Apparently we had reached a great height in the atmosphere, for the
-            sky was a dead black, and the stars had ceased to twinkle.
-          </div>
-        </div>
-
-        <div id="footerSection2">
-          <div class="sectionName">footer section 02</div>
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="explain">
-            By the same illusion which lifts the horizon of the sea to the level
-            of the spectator on a hillside, the sable cloud beneath was dished
-          </div>
-        </div>
-
-        <div id="footerSection3">
-          <div class="sectionName">footer section 03</div>
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="explain">
-            And the car seemed to float in the middle of an immense dark sphere,
-            whose upper half was strewn with silver.
-          </div>
-        </div>
-
-        <div id="footerSection4">
-          <div class="sectionName">footer section 04</div>
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="explain">
-            Looking down into the dark gulf below, I could see a ruddy light
-            streaming through a rift in the clouds.
-          </div>
-        </div>
-      </div>
-      <div id="bottomBar">
-        <div id="copyright">© Copyright</div>
-      </div>
     </div>
+    {% endfor %}
   </body>
 </html>

@@ -61,9 +61,18 @@ class LoginSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ("nickname", "image")
+        fields = ("nickname","photo_tempo","notification","noti_tempo")
         
 class SettingSerializer(serializers.ModelSerializer):
+    nickname = serializers.CharField(max_length=128, default="user")
+    photo_tempo = serializers.IntegerField(default=10)
+    notification = serializers.BooleanField(default=True)
+    noti_tempo = serializers.IntegerField(default=10)
+    
     class Meta:
         model = Profile
-        fields = ("photo_tempo", "noti_tempo", "notification", "image")
+        fields = ("nickname","photo_tempo","notification","noti_tempo")
+
+    def create(self,  validated_data):
+        return Profile(**validated_data)
+    

@@ -9,13 +9,14 @@
 </head>
 
 <body>
+  {% for user in users%}
     <div id="layout">
         <div id="navBar">
             <img src="/media/default.png" id="logo" alt="Logo" />
             <div id="menu">
                 <a class="links" href="{% url 'home_view'%}">Meeting</a>
-                <a class="links" href="{% url 'statis_view' %}">Statics</a>
-                <a class="links" href="{%url 'setting_view' %}">Settings</a>
+                <a class="links" href="{% url 'statis_view'%}">Statics</a>
+                <a class="links" href="{%url 'setting_view'%}">Settings</a>
             </div>
         </div>
         <div id="title">
@@ -86,5 +87,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/public/js/app.js"></script>
     <script src="webcam.js"></script>
+    {% endfor %}
   </body>
 </html>

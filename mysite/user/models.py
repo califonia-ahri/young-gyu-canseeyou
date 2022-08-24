@@ -5,11 +5,11 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    nickname = models.CharField(max_length=128, null=True)
+    nickname = models.CharField(max_length=128, default="user")
     photo_tempo = models.IntegerField(default=10)
     notification = models.BooleanField(default=True)
     noti_tempo = models.IntegerField(default=10)
-    image = models.ImageField(upload_to='profile/', default='/media/default.png')
+    image = models.ImageField(default="/media/default.png")
     
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

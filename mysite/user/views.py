@@ -5,14 +5,16 @@ from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
 from record.models import Room, Detail
+from django.views.generic import UpdateView
 
 from record.serializers import DetailSerializer
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, SettingSerializer
 from .permissions import CustomReadOnly
 from rest_framework.authtoken.models import Token
 
-class RegisterView(generics.CreateAPIView):
+class RegisterView(generics.GenericAPIView):
     queryset = User.objects.all()
+    serializer_class = RegisterSerializer
         
     def get(self, request):
         return render(request, 'user/register.html')
@@ -22,6 +24,7 @@ class RegisterView(generics.CreateAPIView):
         if serializer.is_valid():
             serializer.save()
             return redirect('login_view')
+        return Response(status=status.HTTP_400_BAD_REQUEST)
         
 
 class LoginView(generics.GenericAPIView):
@@ -35,7 +38,9 @@ class LoginView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             token = serializer.validated_data
-            return render(request,"user/home.html", {"token":token.key})
+            response = redirect('home_view')
+            response.set_cookie('token', token.key)
+            return response
         else:
             return redirect('login_view')
 
@@ -44,18 +49,37 @@ class ProfileView(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
     
     def get(self, request):
-        return render(request, 'user/home.html', {'user':request.user})
+        user = User.objects.get(auth_token=request.COOKIES.get('token'))
+        profile = Profile.objects.get_or_create(user=user)
+        return render(request, 'user/home.html', {'users':profile})
 
-class SettingView(generics.GenericAPIView):
+class SettingView(generics.GenericAPIView, UpdateView):
     queryset = Profile.objects.all()
     permission_classes = [CustomReadOnly]
     serializer_class = SettingSerializer
     
     def get(self, request):
-        return render(request, 'user/setting.html')
-    def post(self, serializer):
-        profile = Profile.objects.get_object_or_404(user=self.request.user)
-        serializer.save(user=self.request.user, profile=profile)
+        user = User.objects.get(auth_token=request.COOKIES.get('token'))
+        profile = Profile.objects.get_or_create(user=user)
+        return render(request, 'user/setting.html', {"users":profile})
+    
+    def post(self,request):
+        user = User.objects.get(auth_token=request.COOKIES.get('token'))
+        profile = Profile.objects.get(user=user)
+        
+        serializer =  SettingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            profile.nickname = serializer.data['nickname']
+            profile.photo_tempo = serializer.data['photo_tempo']
+            profile.notification = serializer.data['notification']
+            profile.noti_tempo = serializer.data['noti_tempo']
+            profile.save()
+        
+        profile = Profile.objects.filter(user=user)
+        return render(request, 'user/setting.html', {"users":profile})
+        
+        
     
 class StatisView(generics.RetrieveAPIView):
     queryset = Room.objects.all()
