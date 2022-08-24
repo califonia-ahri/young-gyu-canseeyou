@@ -9,20 +9,26 @@ from record.models import Room, Detail
 from record.serializers import DetailSerializer
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, SettingSerializer
 from .permissions import CustomReadOnly
+from rest_framework.authtoken.models import Token
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = RegisterSerializer
-    success_url = reverse_lazy('login_view')
-    template_name = 'user/register.html'
+        
+    def get(self, request):
+        return render(request, 'user/register.html')
     
-    def get_success_url(self):
-        return reverse('login_view', kwargs={'pk':self.object.user.pk})
-    
+    def post(self, request):
+        serializer = RegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('login_view')
+        
+
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
+    template_name = 'user/login.html'
     
-    def get(self,request):
+    def get(self, request):
         return render(request, 'user/login.html')
     
     def post(self, request):
@@ -32,7 +38,7 @@ class LoginView(generics.GenericAPIView):
             return render(request,"user/home.html", {"token":token.key})
         else:
             return redirect('login_view')
-    
+
 class ProfileView(generics.RetrieveAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

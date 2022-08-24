@@ -4,18 +4,19 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 
-from rest_framework import serializers
+from rest_framework import serializers, status
+from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 
 class RegisterSerializer(serializers.ModelSerializer):
+    many = True
     email = serializers.EmailField(
         validators = [UniqueValidator(queryset=User.objects.all())],    # block overlapped email
         required = True
     )
     
     password = serializers.CharField(
-        help_text="password input",
         write_only = True,
         validators=[validate_password],
         required = True
@@ -34,7 +35,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             )
         return data
     
-    def create(self, request, validated_data):               # override create method and create user and token
+    def create(self, validated_data):               # override create method and create user and token
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email']
