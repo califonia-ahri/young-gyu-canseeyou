@@ -1,0 +1,9 @@
+// .gitignore
+__pycache__/
+*.py[cd]
+
+.Python
+myvenv/
+
+.vscode/
+.env
