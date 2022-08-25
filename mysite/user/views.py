@@ -84,55 +84,58 @@ class SettingView(generics.GenericAPIView, UpdateView):
         
         
     
-class StatisView(generics.RetrieveAPIView):
+class StatisView(generics.GenericAPIView):
     queryset = Room.objects.all()
     permission_classes = [CustomReadOnly]
     serializer_class = DetailSerializer
 
     def get(self, request):
         user = User.objects.get(auth_token=request.COOKIES.get('token'))
-        now = datetime.today()
-        rooms = Room.objects.filter(user=user, start_date=now)
-        details = Detail.objects.filter(user=user, focus_date=now)
+        rooms = Room.objects.filter(user=user, start_time__gte=datetime.today(),
+                                start_time__lte=datetime.today() + timedelta(days=1))
+        details = Detail.objects.filter(user=user, start_focus__gte=datetime.today(),
+                                        start_focus__lte=datetime.today()+timedelta(days=1))
         room_hour = 0
         room_min = 0
         detail_hour = 0
         detail_min = 0
         
         for room in rooms:
-            room_hour += (room.end_time - room.start_time).hour()
-            room_min += (room.end_time - room.start_time).min()
+            room_hour += (room.end_time - room.start_time).seconds // 3600
+            room_min += ((room.end_time - room.start_time).seconds % 3600) // 60
         
         for detail in details:
-            detail_hour += (detail.end_focus - detail.start_focus).hour()
-            detail_min += (detail.end_focus - detail.start_focus).min()
+            detail_hour += (detail.end_focus - detail.start_focus).seconds // 3600
+            detail_min += ((detail.end_focus - detail.start_focus).seconds%3600)//60
         
-        return render(request, 'record/statics.html', {"room_time":datetime.time(room_hour, room_min, 0), 
-                                                       "detail_time":datetime.time(detail_hour, detail_min, 0)})
+        return render(request, 'record/statics.html', {"room_hour":room_hour, "room_min":room_min,  
+                                                       "detail_hour":detail_hour, "detail_min":detail_min})
     
     def post(self, request):
         user = User.objects.get(auth_token=request.COOKIES.get('token'))
-        now = datetime.date(request.POST['year'], request.POST['month'], request.POST['date'])
-        rooms = Room.objects.filter(user=user, start_date=now)
-        details = Detail.objects.filter(user=user, focus_date=now)
+        rooms = Room.objects.filter(user=user, start_time__gte=datetime(int(request.POST['year']), int(request.POST['month']), int(request.POST['date'])),
+                                start_time__lte=datetime(int(request.POST['year']), int(request.POST['month']), int(request.POST['date'])+1))
+        details = Detail.objects.filter(user=user, start_focus__gte=datetime(int(request.POST['year']), int(request.POST['month']), int(request.POST['date'])),
+                                start_focus__lte=datetime(int(request.POST['year']), int(request.POST['month']), int(request.POST['date'])+1))
         room_hour = 0
         room_min = 0
         detail_hour = 0
         detail_min = 0
         
         for room in rooms:
-            room_hour += (room.end_time - room.start_time).hour()
-            room_min += (room.end_time - room.start_time).min()
+            room_hour += (room.end_time - room.start_time).seconds // 3600
+            room_min += ((room.end_time - room.start_time).seconds % 3600) // 60
         
         for detail in details:
-            detail_hour += (detail.end_focus - detail.start_focus).hour()
-            detail_min += (detail.end_focus - detail.start_focus).min()
+            detail_hour += (detail.end_focus - detail.start_focus).seconds // 3600
+            detail_min += ((detail.end_focus - detail.start_focus).seconds%3600)//60
         
-        return render(request, 'record/statics.html', {"room_time":datetime.time(room_hour, room_min, 0), 
-                                                       "detail_time":datetime.time(detail_hour, detail_min, 0)})
+        return render(request, 'record/statics.html', {"room_hour":room_hour, "room_min":room_min,  
+                                                       "detail_hour":detail_hour, "detail_min":detail_min,
+                "rooms":rooms, "details":details})
 
 class TestView(generics.GenericAPIView):
     
     def get(self, request):
-        test2.starting()
+        # test2.starting()
         return render(request, 'home_view')

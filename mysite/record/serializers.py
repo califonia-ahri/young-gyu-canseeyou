@@ -7,11 +7,12 @@ class DetailSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
     class Meta:
         model = Detail
-        fields = ("RID", "profile", "duration", "start_focus", "end_focus", "focus_date")
+        fields = ("RID", "profile", "start_focus", "end_focus", "focus_date")
 
 class DetailCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Detail
+        fields = ("start_focus", "end_focus", "focus_date")
 
 class RoomSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
@@ -23,3 +24,4 @@ class RoomSerializer(serializers.ModelSerializer):
 class RoomCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
+        fields = ("start_time", "end_time", "start_date")

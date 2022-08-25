@@ -41,7 +41,7 @@ const renderCalender = () => {
             i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
         dates[
             i
-        ] = `<form name="search-form" id="${date}" action="" class="date">
+        ] = `<form name="search-form" id="${date}" method="POST" class="date">
                 <input type="hidden" name="year" value=${viewYear}>
                 <input type="hidden" name="month" value=${viewMonth+1}>
                 <input type="hidden" name="date" value=${date}>

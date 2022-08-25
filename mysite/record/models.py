@@ -9,7 +9,9 @@ class Room(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='room', null=True)
     start_date = models.DateField(auto_now_add=True)
     start_time = models.DateTimeField(auto_now_add=True)
-    end_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(auto_now=True)
+    # def __str__(self):
+    #     return self.start_date
     
 class Detail(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='detail', null=True)
@@ -17,3 +19,6 @@ class Detail(models.Model):
     focus_date = models.DateField(auto_now_add=True)
     start_focus = models.DateTimeField(auto_now_add=True)
     end_focus = models.DateTimeField(auto_now=True)
+
+    # def __str__(self):
+    #     return self.focus_date

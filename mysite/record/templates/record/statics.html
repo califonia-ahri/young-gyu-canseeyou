@@ -61,12 +61,16 @@
             <script src="/static/js/index.js"></script>
           </div>
           <div id="box2">
-            {% if not room_time %}
-            <img src="/media/no_data.png">
+            {% if not room_min and not room_hour%}
+            <img src="/media/no_data.png" />
+            {%else%}
+            <span>총 방에 머무른 시간 : {{room_hour}}시간 {{room_hour}}분</span>
+            <span>총 집중한 시간 : {{detail_hour}}시간 {{detail_hour}}분</span>
             {% endif %}
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script>var url = "{% url 'statis_view'%}"</script>
 </html>
