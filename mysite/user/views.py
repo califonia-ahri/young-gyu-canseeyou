@@ -43,6 +43,17 @@ class ProfileView(generics.RetrieveAPIView):
     
     def get(self, request):
         return render(request, 'user/home.html', {'user':request.user})
+    
+    def view(request):
+        if request.method == 'POST':
+                data = request.payload
+                # do something
+                print(data)
+
+                context = {
+                    'result': data,
+                }
+                return context    
 
 
  
@@ -62,3 +73,15 @@ class StatisView(generics.RetrieveAPIView):
 
     def get(self, request):
         return render(request, 'record/statics.html')
+
+
+def view(request):
+   if request.method == 'POST':
+        data = request.body
+        # do something
+        print(data)
+
+        context = {
+            'result': data,
+        }
+        return context

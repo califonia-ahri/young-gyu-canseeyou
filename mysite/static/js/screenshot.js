@@ -77,7 +77,7 @@
         );
 
         startbutton.addEventListener(
-            "click", takepicture
+            "click", () => {takePicture(5000);}
        
         );
 
@@ -102,20 +102,53 @@
     // drawing that to the screen, we can change its size and/or apply
     // other changes before drawing it.
 
-    function takepicture() {
-        const context = canvas.getContext("2d");
-        if (width && height) {
-            canvas.width = width;
-            canvas.height = height;
-            context.drawImage(video, 0, 0, width, height);
-            const data = canvas.toDataURL("image/png");
+    // function takepicture() {
+    //     const context = canvas.getContext("2d");
+    //     if (width && height) {
+    //         canvas.width = width;
+    //         canvas.height = height;
+    //         context.drawImage(video, 0, 0, width, height);
+    //         const data = canvas.toDataURL("image/png");
 
-        } else {
-            clearphoto();
-        }
+    //     } else {
+    //         clearphoto();
+    //     }
+    // }
+    function takePicture(cycle) {
+        setInterval(() => {
+            const context = canvas.getContext("2d");
+            if (width && height) {
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
+                const data = canvas.toDataURL("image/png");
+
+                $.ajax({
+                    type:'POST',
+                    url: "../../user/views.py",
+                    data : {
+                        payload: data},
+                    success: console.log("전송완료"),
+                    error: console.log("전송실패")
+
+                })
+
+
+                
+            } else {
+                clearphoto();
+            }
+        }, cycle);
     }
+
+
+
+
+
+
 
     // Set up our event listener to run the startup process
     // once loading is complete.
     window.addEventListener("load", startup, false);
 })();
+
