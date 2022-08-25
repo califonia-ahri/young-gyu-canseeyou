@@ -47,7 +47,7 @@ def find_eye_cord(address) :
     global roi
     global cord_list
 
-    cord_list = (0, 0) # wrong eye_cord.
+    # cord_list = (0, 0) # wrong eye_cord.
 
     print("Find eye cord")
     detector = dlib.get_frontal_face_detector()
@@ -117,11 +117,13 @@ def find_eye_cord(address) :
                         cv2.line(roi, (0, y + int(h / 2)), (cols, y + int(h / 2)), (0, 255, 0), 2)
 
                         print( "result = %d , %d\n"%(x+w/2,y+h/2))
-                        cord_list = ((x+w/2),(y+h/2))
-                        #print(index)
-                        eye_cord.loc[index] = [index, x + w / 2, y + h / 2]
-                        index += 1
+                        
                         break
+                    cv2.imshow("Threshold", threshold)
+                    cv2.imshow("gray roi", gray_roi)
+                    cv2.imshow("roi", roi)
+                    cv2.imshow("Frame", frame)
+                
                 else:
                     break
 
