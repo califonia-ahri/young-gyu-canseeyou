@@ -11,6 +11,7 @@ def get_eye_scope(address,address1,address2) :
     import pandas as pd
     import numpy as np
     import os.path
+    global eye_trace_on_focus_scope_data
     from sklearn.tree import DecisionTreeClassifier
     from sklearn.model_selection import train_test_split
     print("Get eye Scope")
