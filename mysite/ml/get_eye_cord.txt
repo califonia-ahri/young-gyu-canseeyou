@@ -42,8 +42,8 @@ def find_eye_cord(address):
 
     file1 = address + file
     print(file1)
-    if not os.path.exists(file):
-        eye_cord = pd.DataFrame( [[0,480,270]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
+    if not os.path.exists(file): 
+        eye_cord = pd.DataFrame( [[0,405,360]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
     else :
         eye_cord = pd.read_csv(file1,sep=",")
 
@@ -55,7 +55,7 @@ def find_eye_cord(address):
 
     if not os.path.exists(file1):
         #print("no %s file" % file1)
-        eye_cord = pd.DataFrame( [[0,480,270]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
+        eye_cord = pd.DataFrame( [[0,405,360]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
 
     else :
         #print("exist %s file" % file1)
