@@ -29,7 +29,7 @@ def DBSCAN_Clustering(address) :
         df = pd.read_csv(file1,usecols=[1,2])
         #print(df)
         df_copy = pd.read_csv(file1, sep=',')
-        eye_trace_scope_data = pd.DataFrame( [[0,480,270]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
+        eye_trace_scope_data = pd.DataFrame( [[0,405,360]],columns = ['num','x_cord' , 'y_cord'],dtype = float)
 
         data = df[['x_cord', 'y_cord']]
 
