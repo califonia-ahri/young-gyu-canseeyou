@@ -51,8 +51,8 @@ def find_eye_cord(address) :
 
     print("Find eye cord")
     detector = dlib.get_frontal_face_detector()
-    eye_cascade = cv2.CascadeClassifier("../data/haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
-    predictor = dlib.shape_predictor( "../data/shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
+    eye_cascade = cv2.CascadeClassifier("C:\\apis\\mysite\\ml\\haarcascade_eye_tree_eyeglasses.xml")  # use Machine learing by opencv data. if wore eye_glasses.
+    predictor = dlib.shape_predictor( "C:\\apis\\mysite\\ml\\shape_predictor_68_face_landmarks.dat")  # using face dlib learing data classified by 68 dot.
     file1 = address+file
 
     if not glob.glob(address+"\*.PNG"):
@@ -116,7 +116,7 @@ def find_eye_cord(address) :
                         cv2.line(roi, (x + int(w / 2), 0), (x + int(w / 2), rows), (0, 255, 0), 2)
                         cv2.line(roi, (0, y + int(h / 2)), (cols, y + int(h / 2)), (0, 255, 0), 2)
 
-                        #print( "result = %d , %d\n"%(x+w/2,y+h/2))
+                        print( "result = %d , %d\n"%(x+w/2,y+h/2))
                         cord_list = ((x+w/2),(y+h/2))
                         #print(index)
                         eye_cord.loc[index] = [index, x + w / 2, y + h / 2]

@@ -12,7 +12,7 @@ def starting():
         clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
         clearConsole()
 
-        address = sys.argv[1]
+        address = "C:\\apis\\photo"
         address_1 = address+"\ml_model.pkl"
         if not os.path.exists(address_1):
             print("no ml file")
