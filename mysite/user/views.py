@@ -8,6 +8,8 @@ from .utils import get_turn_info
 from record.serializers import DetailSerializer
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, SettingSerializer
 from .permissions import CustomReadOnly
+import json
+from django.http import JsonResponse
 
 
 class RegisterView(generics.CreateAPIView):
@@ -37,23 +39,14 @@ class LoginView(generics.GenericAPIView):
 
 
     
-class ProfileView(generics.RetrieveAPIView):
+class ProfileView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     
     def get(self, request):
         return render(request, 'user/home.html', {'user':request.user})
-    
-    def view(request):
-        if request.method == 'POST':
-                data = request.payload
-                # do something
-                print(data)
 
-                context = {
-                    'result': data,
-                }
-                return context    
+
 
 
  
@@ -75,13 +68,12 @@ class StatisView(generics.RetrieveAPIView):
         return render(request, 'record/statics.html')
 
 
-def view(request):
-   if request.method == 'POST':
-        data = request.body
-        # do something
-        print(data)
-
-        context = {
-            'result': data,
-        }
-        return context
+def ajax_method(request):
+     if request.type== 'POST':
+         data = request['upload_data']
+          # do something
+         print(data)
+         context = {
+              'result': data,
+         }
+         return JsonResponse(context)

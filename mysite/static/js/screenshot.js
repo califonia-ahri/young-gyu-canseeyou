@@ -1,3 +1,5 @@
+window.CSRF_TOKEN = "{{ csrf_token }}";
+
 (() => {
     // The width and height of the captured photo. We will set the
     // width to the value defined here, but the height will be
@@ -76,10 +78,9 @@
             false
         );
 
-        startbutton.addEventListener(
-            "click", () => {takePicture(5000);}
-       
-        );
+        startbutton.addEventListener("click", () => {
+            takePicture(5000);
+        });
 
         clearphoto();
     }
@@ -96,24 +97,8 @@
         photo.setAttribute("src", data);
     }
 
-    // Capture a photo by fetching the current contents of the video
-    // and drawing it into a canvas, then converting that to a PNG
-    // format data URL. By drawing it on an offscreen canvas and then
-    // drawing that to the screen, we can change its size and/or apply
-    // other changes before drawing it.
 
-    // function takepicture() {
-    //     const context = canvas.getContext("2d");
-    //     if (width && height) {
-    //         canvas.width = width;
-    //         canvas.height = height;
-    //         context.drawImage(video, 0, 0, width, height);
-    //         const data = canvas.toDataURL("image/png");
-
-    //     } else {
-    //         clearphoto();
-    //     }
-    // }
+    // 서버로 매 주기마다 캡처 사진 보내기
     function takePicture(cycle) {
         setInterval(() => {
             const context = canvas.getContext("2d");
@@ -121,34 +106,37 @@
                 canvas.width = width;
                 canvas.height = height;
                 context.drawImage(video, 0, 0, width, height);
-                const data = canvas.toDataURL("image/png");
+                let data = canvas.toDataURL("image/png");
+
+                // const uploaded_data = JSON.stringify(data);
 
                 $.ajax({
-                    type:'POST',
-                    url: "../../user/views.py",
-                    data : {
-                        payload: data},
-                    success: console.log("전송완료"),
-                    error: console.log("전송실패")
+                    type: "POST",
+                    url: "{% url 'ajax_method' %}",
+                    data: JSON.stringify({ Img_Data: data }),
+                    // csrfmiddlewaretoken: "{{ csrf_token }}",
 
-                })
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function(data) {
+                        if (data) {
+                            console.log("if완료완료");
+                        } else {
+                            console.log("else완료");
+                        }
+                    },
 
-
-                
+                    error: function() {
+                        console.log("data error");
+                    },
+                });
             } else {
                 clearphoto();
             }
         }, cycle);
     }
 
-
-
-
-
-
-
     // Set up our event listener to run the startup process
     // once loading is complete.
     window.addEventListener("load", startup, false);
 })();
-

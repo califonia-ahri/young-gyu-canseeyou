@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width" initial-scale="1.0" />
     <title>Eye Can See You</title>
     <link rel="stylesheet" href="../../../static/css/style.css" media="(min-width: 768px)" />
-    <link rel="stylesheet" href="../../../static/css/btnstyle.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>s
-
+    <link rel="stylesheet" href="../../../static/css/btnstyle.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script>
+        "{% static '"
+    </script>
 </head>
 
 <body>
-
     <div id="layout">
         <div id="navBar">
             <img src="/media/Logo_eyes.png" id="logo" alt="Logo" />
@@ -62,7 +64,7 @@
                             <ul id="message-list" style="list-style-type: none;padding-left: 15px;"></ul>
                         </div>
                         <div style="text-align:right">
-                            <div id="ct"><input id="msg" style="width:529px"><button id="btn-send-msg">Send</button></div>
+                            <div id="ct"><input id="msg" style="width:311px"><button id="btn-send-msg">Send</button></div>
 
                             <button id="btn-share-screen">Share Screen</button>
                             <button id="btn-record-screen">Record Screen</button>
@@ -96,10 +98,10 @@
                 console.log("bye");
             });
         </script>
-        <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-        <script type="text/javascript" src="{% static 'js/peer.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/screenshot.js' %}"></script>
+
 
 </body>
+<script type="text/javascript" src="{% static 'js/peer.js' %}"></script>
+<script src="{% static 'js/screenshot.js' %}"></script>
 
 </html>
