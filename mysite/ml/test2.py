@@ -20,6 +20,8 @@ def starting():
             address_1 = get_ml_path(address)
         else :
             print("exist ml file")
+            if not os.path.exists(address+"\\*.PNG") :
+                get_img_per_5s(address)
         result = get_focus_int_by_ml(address,address_1)
         print("eye_focus_predition_by_Ml_model : %d" %result)
         
