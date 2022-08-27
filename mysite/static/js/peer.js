@@ -1019,10 +1019,3 @@ function removeVideo(video) {
     // remove it
     videoWrapper.parentNode.removeChild(videoWrapper);
 }
-
-webSocket.addEventListener("message", (msg) => {
-    var li = document.createElement("div");
-    li.style.color = "red";
-    li.appendChild(document.createTextNode("SYSTEM : " + msg));
-    ul.appendChild(li);
-});

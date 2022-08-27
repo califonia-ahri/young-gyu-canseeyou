@@ -288,14 +288,14 @@ a:active {
     margin: 5px;
 }
 
+#settingRoom {
+    padding: 20px;
+}
+
 .chatbox {
     width: auto;
     height: 200px;
     border: 10px solid #e8c48f;
     padding: 5px;
     overflow: auto;
-}
-
-#settingRoom {
-    padding: 20px;
 }

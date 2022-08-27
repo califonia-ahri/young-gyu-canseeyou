@@ -138,4 +138,7 @@ class TestView(generics.GenericAPIView):
     
     def get(self, request):
         # test2.starting()
-        return render(request, 'home_view')
+        return render(request, 'user/test.html')
+    def post(self, request):
+        test2.starting()
+        return redirect('home_view')

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'rest_framework.authtoken',
     'channels',
-    
     "user",
     "record",
     
